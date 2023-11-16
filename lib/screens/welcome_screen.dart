@@ -90,7 +90,7 @@ class WelcomeScreen extends StatelessWidget {
                     height: 60,
                   ),
                   Material(
-                    color: const Color.fromARGB(255, 194, 131, 233),
+                    color: const Color.fromARGB(255, 148, 18, 228),
                     borderRadius: BorderRadius.circular(10),
                     child: InkWell(
                       onTap: () {
