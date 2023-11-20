@@ -9,9 +9,9 @@ class HomePage extends StatelessWidget {
   ];
 
   List<Color> catColors = [
-    Colors.yellowAccent,
+    Colors.yellow,
     Colors.blueAccent,
-    Colors.greenAccent,
+    Colors.green,
   ];
 
   List<Icon> catIcons = [
