@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-// ignore: use_key_in_widget_constructors
+// ignore: use_key_in_widget_constructors,
 class HomePage extends StatelessWidget {
   List catNames = [
     "Category",
@@ -18,6 +18,14 @@ class HomePage extends StatelessWidget {
     const Icon(Icons.category, color: Colors.white, size: 30),
     const Icon(Icons.assignment, color: Colors.white, size: 30),
     const Icon(Icons.emoji_events, color: Colors.white, size: 30),
+  ];
+
+  List imgList = [
+    'mess_1',
+    'mess_2',
+    'mess_3',
+    'mess_4',
+    'mess_5',
   ];
 
   @override
@@ -122,6 +130,66 @@ class HomePage extends StatelessWidget {
                             ),
                           )
                         ],
+                      );
+                    }),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Messes",
+                      style: TextStyle(
+                        fontSize: 23,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    Text(
+                      "See All",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.blue,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                GridView.builder(
+                    itemCount: imgList.length,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio:
+                          (MediaQuery.of(context).size.height - 50 - 25) /
+                              (4 * 240),
+                      mainAxisSpacing: 10,
+                      crossAxisSpacing: 10,
+                    ),
+                    itemBuilder: (context, index) {
+                      return InkWell(
+                        onTap: () {},
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 20, horizontal: 10),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: const Color(0xFFF5F3FF),
+                          ),
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(10),
+                                child: Image.asset(
+                                  "assets/mess_pic/${imgList[index]}.png",
+                                  width: 185,
+                                  height: 110,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                       );
                     }),
               ],
