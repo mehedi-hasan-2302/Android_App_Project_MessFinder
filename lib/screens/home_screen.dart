@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:messfinder/screens/mess_screen.dart';
 
-// ignore: use_key_in_widget_constructors,
+
+// ignore: must_be_immutable
 class HomePage extends StatelessWidget {
   List catNames = [
     "Category",
@@ -21,12 +23,14 @@ class HomePage extends StatelessWidget {
   ];
 
   List imgList = [
-    'mess_1',
-    'mess_2',
-    'mess_3',
-    'mess_4',
-    'mess_5',
+    'Mess_1',
+    'Mess_2',
+    'Mess_3',
+    'Mess_4',
+    'Mess_5',
   ];
+
+  HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -169,7 +173,15 @@ class HomePage extends StatelessWidget {
                   ),
                   itemBuilder: (context, index) {
                     return InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MessScreen(
+                                imgList[index],
+                              ),
+                            ));
+                      },
                       child: Container(
                         padding: const EdgeInsets.symmetric(
                             vertical: 20, horizontal: 10),
@@ -224,8 +236,10 @@ class HomePage extends StatelessWidget {
         unselectedItemColor: Colors.grey,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.assignment), label: 'Messes'),
-          BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'Wishlist'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.assignment), label: 'Messes'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.favorite), label: 'Wishlist'),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Account'),
         ],
       ),
