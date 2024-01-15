@@ -234,18 +234,21 @@ class HomePage extends StatelessWidget {
        bottomNavigationBar: BottomNavigationBar(
         onTap: (value) {
           if (value == 0) {
-           
-          } else if (value == 1) {
-              
-          } else if (value == 2) {
-             Navigator.push(
+            Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) =>  WishlistScreen(),
+                builder: (context) => HomePage(),
               ),
             );
-          } else if (value == 3) {
-             Navigator.push(
+          } else if (value == 1) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => WishlistScreen(),
+              ),
+            );
+          } else if (value == 2) {
+            Navigator.push(
               context,
               MaterialPageRoute(
                 builder: (context) => const LoginPage(),
@@ -260,8 +263,6 @@ class HomePage extends StatelessWidget {
         unselectedItemColor: Colors.grey,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.assignment), label: 'Messes'),
           BottomNavigationBarItem(
               icon: Icon(Icons.favorite), label: 'Wishlist'),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Account'),

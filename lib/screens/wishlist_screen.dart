@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:messfinder/screens/mess_screen.dart';
 import 'package:messfinder/screens/login_screen.dart';
 import 'package:messfinder/screens/home_screen.dart';
+
 // Model class for mess details
 class Mess {
   final String name;
@@ -18,7 +19,6 @@ class Mess {
 }
 
 class WishlistScreen extends StatelessWidget {
-  
   List<Mess> bookmarkedMesses = [
     Mess(
       name: 'Mess_1',
@@ -36,14 +36,13 @@ class WishlistScreen extends StatelessWidget {
       imagePath: 'assets/mess_pic/Mess_5.png',
     ),
   ];
-    List imgList = [
+  List imgList = [
     'Mess_1',
     'Mess_2',
     'Mess_3',
     'Mess_4',
     'Mess_5',
   ];
-
 
   WishlistScreen({super.key});
 
@@ -59,7 +58,6 @@ class WishlistScreen extends StatelessWidget {
           Mess mess = bookmarkedMesses[index];
           return InkWell(
             onTap: () {
-              
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -86,25 +84,21 @@ class WishlistScreen extends StatelessWidget {
       bottomNavigationBar: BottomNavigationBar(
         onTap: (value) {
           if (value == 0) {
-              Navigator.push(
+            Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) =>  HomePage(),
+                builder: (context) => HomePage(),
               ),
             );
-           
           } else if (value == 1) {
-              
-            
-          } else if (value == 2) {
-             Navigator.push(
+            Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) =>  WishlistScreen(),
+                builder: (context) => WishlistScreen(),
               ),
             );
-          } else if (value == 3) {
-             Navigator.push(
+          } else if (value == 2) {
+            Navigator.push(
               context,
               MaterialPageRoute(
                 builder: (context) => const LoginPage(),
@@ -119,8 +113,6 @@ class WishlistScreen extends StatelessWidget {
         unselectedItemColor: Colors.grey,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.assignment), label: 'Messes'),
           BottomNavigationBarItem(
               icon: Icon(Icons.favorite), label: 'Wishlist'),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Account'),

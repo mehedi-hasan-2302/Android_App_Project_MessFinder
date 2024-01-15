@@ -1,5 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:messfinder/screens/home_screen.dart';
+import 'package:messfinder/screens/wishlist_screen.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -20,6 +22,40 @@ class LoginPage extends StatelessWidget {
             ],
           ),
         ),
+        bottomNavigationBar: BottomNavigationBar(
+        onTap: (value) {
+          if (value == 0) {
+           
+          }  else if (value == 1) {
+             Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>  WishlistScreen(),
+              ),
+            );
+          } else if (value == 2) {
+             Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const LoginPage(),
+              ),
+            );
+          }
+        },
+        showUnselectedLabels: true,
+        iconSize: 32,
+        selectedItemColor: Colors.purple,
+        selectedFontSize: 18,
+        unselectedItemColor: Colors.grey,
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          // BottomNavigationBarItem(
+          //     icon: Icon(Icons.assignment), label: 'Messes'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.favorite), label: 'Wishlist'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Account'),
+        ],
+      ),
       ),
     );
   }
