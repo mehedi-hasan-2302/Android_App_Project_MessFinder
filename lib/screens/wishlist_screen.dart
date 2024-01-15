@@ -106,16 +106,16 @@ class WishlistScreen extends StatelessWidget {
             );
           }
         },
-        showUnselectedLabels: true,
-        iconSize: 32,
-        selectedItemColor: Colors.purple,
-        selectedFontSize: 18,
-        unselectedItemColor: Colors.grey,
+        //showUnselectedLabels: true,
+        iconSize: 35,
+       // selectedItemColor: Colors.purple,
+      //  selectedFontSize: 18,
+       // unselectedItemColor: Colors.grey,
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.home,color: Colors.black), label: 'Home'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.favorite), label: 'Wishlist'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Account'),
+              icon: Icon(Icons.favorite,color: Colors.black), label: 'Wishlist'),
+          BottomNavigationBarItem(icon: Icon(Icons.person,color: Colors.black), label: 'Account'),
         ],
       ),
     );
