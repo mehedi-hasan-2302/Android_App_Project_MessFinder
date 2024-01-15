@@ -118,7 +118,7 @@ class _MessScreenState extends State<MessScreen> {
                     color: Colors.blue,
                     borderRadius: BorderRadius.circular(10),
                     child: InkWell(
-                      onTap: () {},
+                      onTap: () { },
                       child: Container(
                         padding: const EdgeInsets.symmetric(
                             vertical: 15, horizontal: 15),

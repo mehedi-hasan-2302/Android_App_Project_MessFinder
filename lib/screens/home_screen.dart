@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:messfinder/screens/mess_screen.dart';
+import 'package:messfinder/screens/login_screen.dart';
+import 'package:messfinder/screens/wishlist_screen.dart';
 
 
 // ignore: must_be_immutable
 class HomePage extends StatelessWidget {
+ 
   List catNames = [
     "Category",
     "Booked",
@@ -228,7 +231,28 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
+       bottomNavigationBar: BottomNavigationBar(
+        onTap: (value) {
+          if (value == 0) {
+           
+          } else if (value == 1) {
+              
+          } else if (value == 2) {
+             Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>  WishlistScreen(),
+              ),
+            );
+          } else if (value == 3) {
+             Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const LoginPage(),
+              ),
+            );
+          }
+        },
         showUnselectedLabels: true,
         iconSize: 32,
         selectedItemColor: Colors.purple,
