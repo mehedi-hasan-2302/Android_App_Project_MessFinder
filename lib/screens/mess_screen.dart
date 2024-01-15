@@ -1,12 +1,17 @@
-import 'package:flutter/material.dart';
+// ignore_for_file: library_private_types_in_public_api
 
-// ignore: must_be_immutable
+import 'package:flutter/material.dart';
+import 'package:messfinder/screens/home_screen.dart';
+import 'package:messfinder/screens/wishlist_screen.dart';
+import 'package:messfinder/screens/login_screen.dart';
+
 class MessScreen extends StatefulWidget {
-  String img;
-  // ignore: use_key_in_widget_constructors
-  MessScreen(this.img);
+  final String img;
+
+  const MessScreen(this.img, {super.key});
+
   @override
-  State<MessScreen> createState() => _MessScreenState();
+  _MessScreenState createState() => _MessScreenState();
 }
 
 class _MessScreenState extends State<MessScreen> {
@@ -14,13 +19,13 @@ class _MessScreenState extends State<MessScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        foregroundColor: Colors.black,
         backgroundColor: Colors.white,
         elevation: 0,
         centerTitle: true,
         title: Text(
           widget.img,
           style: const TextStyle(
+            color: Colors.black,
             fontWeight: FontWeight.bold,
             letterSpacing: 1,
           ),
@@ -37,126 +42,145 @@ class _MessScreenState extends State<MessScreen> {
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-        child: ListView(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              padding: const EdgeInsets.all(5),
-              width: MediaQuery.of(context).size.width,
               height: 200,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                color: Colors.white,
                 image: DecorationImage(
                   image: AssetImage("assets/mess_pic/${widget.img}.png"),
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
-            const SizedBox(
-              height: 20,
-            ),
+            const SizedBox(height: 20),
             const Text(
               "Description:",
               style: TextStyle(
-                fontSize: 28,
+                fontSize: 25,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(
-              height: 10,
-            ),
+            const SizedBox(height: 10),
             const Text(
-              "No of seat Available: 1",
+              "No of Seats Available: 1",
               style: TextStyle(
-                fontSize: 24,
-                //fontWeight: FontWeight.bold,
+                fontSize: 20,
               ),
             ),
-            const SizedBox(
-              height: 10,
-            ),
+            const SizedBox(height: 10),
             const Text(
               "Seat Fare: 2200",
               style: TextStyle(
-                fontSize: 24,
-                //fontWeight: FontWeight.bold,
+                fontSize: 20,
               ),
             ),
-            const SizedBox(
-              height: 10,
-            ),
+            const SizedBox(height: 10),
             const Text(
-              "Bills: wifi-200 , cook-350, electricity-depends*",
+              "Bills: WiFi - 200, Cook - 350, Electricity - **Depends",
               style: TextStyle(
-                fontSize: 24,
-                //fontWeight: FontWeight.bold,
+                fontSize: 20,
               ),
             ),
-             const SizedBox(
-              height: 10,
-            ),
+            const SizedBox(height: 10),
             const Text(
               "Location: Lakecity",
               style: TextStyle(
-                fontSize: 24,
-                //fontWeight: FontWeight.bold,
+                fontSize: 20,
               ),
             ),
-            const SizedBox(
-              height: 30,
-            ),
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-              decoration: BoxDecoration(
-                color: const Color(0xFFF5F3FF),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Material(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.circular(10),
-                    child: InkWell(
-                      onTap: () { },
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 15, horizontal: 15),
-                        child: const Text(
-                          "Book Now",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
+            const SizedBox(height: 30),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    // Handle Book Now
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  child: const Padding(
+                    padding: EdgeInsets.all(15),
+                    child: Text(
+                      "Book Now",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                   ),
-                  Material(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.circular(10),
-                    child: InkWell(
-                      onTap: () {},
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 15, horizontal: 25),
-                        child: const Text(
-                          "Message/Call",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    // Handle Message/Call
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  child: const Padding(
+                    padding: EdgeInsets.all(15),
+                    child: Text(
+                      "Message/Call",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: (value) {
+          if (value == 0) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => HomePage(),
+              ),
+            );
+          } else if (value == 1) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => WishlistScreen(),
+              ),
+            );
+          } else if (value == 2) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const LoginPage(),
+              ),
+            );
+          }
+        },
+        showUnselectedLabels: true,
+        iconSize: 32,
+        selectedItemColor: Colors.purple,
+        selectedFontSize: 18,
+        unselectedItemColor: Colors.grey,
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.favorite), label: 'Wishlist'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Account'),
+        ],
       ),
     );
   }
