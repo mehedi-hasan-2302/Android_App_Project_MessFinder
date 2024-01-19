@@ -5,7 +5,7 @@ import 'package:messfinder/screens/mess_screen.dart';
 import 'package:messfinder/screens/login_screen.dart';
 import 'package:messfinder/screens/home_screen.dart';
 
-// Model class for mess details
+
 class Mess {
   final String name;
   final String description;
@@ -19,11 +19,27 @@ class Mess {
 }
 
 class WishlistScreen extends StatelessWidget {
-  List<Mess> bookmarkedMesses = [
+  final List<String> wishlistedMessNames;
+
+  WishlistScreen({Key? key, required this.wishlistedMessNames}) : super(key: key);
+
+  List<Mess> get bookmarkedMesses {
+    
+    return messList
+        .where((mess) => wishlistedMessNames.contains(mess.name))
+        .toList();
+  }
+
+  List<Mess> messList = [
     Mess(
       name: 'Mess_1',
       description: 'Delicious food in a cozy environment.',
       imagePath: 'assets/mess_pic/Mess_1.png',
+    ),
+    Mess(
+      name: 'Mess_2',
+      description: 'Amazing facilities',
+      imagePath: 'assets/mess_pic/Mess_2.png',
     ),
     Mess(
       name: 'Mess_3',
@@ -31,20 +47,16 @@ class WishlistScreen extends StatelessWidget {
       imagePath: 'assets/mess_pic/Mess_3.png',
     ),
     Mess(
+      name: 'Mess_4',
+      description: 'Excellent environment with security',
+      imagePath: 'assets/mess_pic/Mess_4.png',
+    ),
+    Mess(
       name: 'Mess_5',
       description: 'Variety of cuisines to satisfy your taste buds.',
       imagePath: 'assets/mess_pic/Mess_5.png',
     ),
   ];
-  List imgList = [
-    'Mess_1',
-    'Mess_2',
-    'Mess_3',
-    'Mess_4',
-    'Mess_5',
-  ];
-
-  WishlistScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +74,7 @@ class WishlistScreen extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => MessScreen(imgList[index]),
+                  builder: (context) => MessScreen(mess.name),
                 ),
               );
             },
@@ -95,7 +107,9 @@ class WishlistScreen extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => WishlistScreen(),
+                builder: (context) => WishlistScreen(
+                  wishlistedMessNames: wishlistedMessNames,
+                ),
               ),
             );
           } else if (value == 2) {
@@ -107,16 +121,20 @@ class WishlistScreen extends StatelessWidget {
             );
           }
         },
-        //showUnselectedLabels: true,
         iconSize: 35,
-       // selectedItemColor: Colors.purple,
-      //  selectedFontSize: 18,
-       // unselectedItemColor: Colors.grey,
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home,color: Colors.black), label: 'Home'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.favorite,color: Colors.black), label: 'Wishlist'),
-          BottomNavigationBarItem(icon: Icon(Icons.person,color: Colors.black), label: 'Account'),
+            icon: Icon(Icons.home, color: Colors.black),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite, color: Colors.black),
+            label: 'Wishlist',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person, color: Colors.black),
+            label: 'Account',
+          ),
         ],
       ),
     );

@@ -40,7 +40,7 @@ class LoginPage extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => WishlistScreen(),
+                builder: (context) => WishlistScreen(wishlistedMessNames: const [],),
               ),
             );
           } else if (value == 2) {

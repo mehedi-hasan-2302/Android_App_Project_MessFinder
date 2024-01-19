@@ -6,19 +6,18 @@ import 'package:messfinder/screens/wishlist_screen.dart';
 import 'package:messfinder/screens/login_screen.dart';
 import 'package:messfinder/screens/booking_screen.dart';
 
-
 class MessScreen extends StatefulWidget {
   final String img;
 
-  const MessScreen(this.img, {super.key});
+  const MessScreen(this.img, {Key? key}) : super(key: key);
 
   @override
   _MessScreenState createState() => _MessScreenState();
 }
 
 class _MessScreenState extends State<MessScreen> {
+  bool isWishlisted = false; 
 
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,7 +69,7 @@ class _MessScreenState extends State<MessScreen> {
             ),
             const SizedBox(height: 10),
             const Text(
-              "No of Seats Available: 1",
+              "Number of Seats Available: 1",
               style: TextStyle(
                 fontSize: 20,
               ),
@@ -104,10 +103,10 @@ class _MessScreenState extends State<MessScreen> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                       MaterialPageRoute(
-                           builder: (context) => BookingPage(messName: widget.img),
-                          ),
-                       );
+                      MaterialPageRoute(
+                        builder: (context) => BookingPage(messName: widget.img),
+                      ),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromARGB(255, 194, 131, 233),
@@ -128,11 +127,31 @@ class _MessScreenState extends State<MessScreen> {
                   ),
                 ),
                 ElevatedButton(
-                  onPressed: () {
-                   
-                  },
+                  onPressed: isWishlisted
+                      ? () {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Mess is already in the wishlist.'),
+                            ),
+                          );
+                        }
+                      : (){
+
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => WishlistScreen(
+                                wishlistedMessNames: [widget.img],
+                              ),
+                            ),
+                          );
+                          
+                          setState(() {
+                            isWishlisted = true;
+                          });
+                        },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor:const Color.fromARGB(255, 194, 131, 233),
+                    backgroundColor: const Color.fromARGB(255, 194, 131, 233),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -140,7 +159,7 @@ class _MessScreenState extends State<MessScreen> {
                   child: const Padding(
                     padding: EdgeInsets.all(15),
                     child: Text(
-                      "Message/Call",
+                      "Add to Wishlist",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 18,
@@ -167,10 +186,9 @@ class _MessScreenState extends State<MessScreen> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => WishlistScreen(),
+                builder: (context) => WishlistScreen(wishlistedMessNames: const []),
               ),
             );
-          } else if (value == 2) {
             Navigator.push(
               context,
               MaterialPageRoute(
@@ -179,19 +197,20 @@ class _MessScreenState extends State<MessScreen> {
             );
           }
         },
-        // showUnselectedLabels: true,
         iconSize: 35,
-        // selectedItemColor: Colors.purple,
-        // selectedFontSize: 18,
-        // unselectedItemColor: Colors.grey,
         items: const [
           BottomNavigationBarItem(
-              icon: Icon(Icons.home, color: Colors.black), label: 'Home'),
+            icon: Icon(Icons.home, color: Colors.black),
+            label: 'Home',
+          ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.favorite, color: Colors.black),
-              label: 'Wishlist'),
+            icon: Icon(Icons.favorite, color: Colors.black),
+            label: 'Wishlist',
+          ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.person, color: Colors.black), label: 'Account'),
+            icon: Icon(Icons.person, color: Colors.black),
+            label: 'Account',
+          ),
         ],
       ),
     );
