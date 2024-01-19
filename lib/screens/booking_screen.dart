@@ -86,8 +86,8 @@ class _BookingFormState extends State<BookingForm> {
   void _submitBooking(BuildContext context) {
    
     String name = _nameController.text;
-    String email = _emailController.text;
-    String phone = _phoneController.text;
+    // String email = _emailController.text;
+    // String phone = _phoneController.text;
 
     
     showDialog(
