@@ -189,7 +189,8 @@ class _MessScreenState extends State<MessScreen> {
                 builder: (context) => WishlistScreen(wishlistedMessNames: const []),
               ),
             );
-            Navigator.push(
+          }
+           else if(value == 2){ Navigator.push(
               context,
               MaterialPageRoute(
                 builder: (context) => const LoginPage(),
