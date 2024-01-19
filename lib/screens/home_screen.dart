@@ -115,7 +115,7 @@ class HomePage extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        // Handle See All
+                       
                       },
                       child: const Text(
                         "See All",
@@ -227,7 +227,8 @@ class HomePage extends StatelessWidget {
        // selectedItemColor: Colors.purple,
       //  selectedFontSize: 18,
       //  unselectedItemColor: Colors.grey,
-        items: const [
+
+        items: const  [
           BottomNavigationBarItem(icon: Icon(Icons.home,color: Colors.black), label: 'Home'),
           BottomNavigationBarItem(
             icon: Icon(Icons.favorite,color: Colors.black),

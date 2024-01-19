@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:messfinder/screens/home_screen.dart';
 import 'package:messfinder/screens/wishlist_screen.dart';
 import 'package:messfinder/screens/login_screen.dart';
+import 'package:messfinder/screens/booking_screen.dart';
+
 
 class MessScreen extends StatefulWidget {
   final String img;
@@ -15,6 +17,8 @@ class MessScreen extends StatefulWidget {
 }
 
 class _MessScreenState extends State<MessScreen> {
+
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -98,10 +102,15 @@ class _MessScreenState extends State<MessScreen> {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    // Handle Book Now
+                    Navigator.push(
+                      context,
+                       MaterialPageRoute(
+                           builder: (context) => BookingPage(messName: widget.img),
+                          ),
+                       );
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue,
+                    backgroundColor: const Color.fromARGB(255, 194, 131, 233),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -120,10 +129,10 @@ class _MessScreenState extends State<MessScreen> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    // Handle Message/Call
+                   
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue,
+                    backgroundColor:const Color.fromARGB(255, 194, 131, 233),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -170,16 +179,19 @@ class _MessScreenState extends State<MessScreen> {
             );
           }
         },
-       // showUnselectedLabels: true,
+        // showUnselectedLabels: true,
         iconSize: 35,
-       // selectedItemColor: Colors.purple,
-       // selectedFontSize: 18,
-       // unselectedItemColor: Colors.grey,
+        // selectedItemColor: Colors.purple,
+        // selectedFontSize: 18,
+        // unselectedItemColor: Colors.grey,
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home,color: Colors.black), label: 'Home'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.favorite,color: Colors.black), label: 'Wishlist'),
-          BottomNavigationBarItem(icon: Icon(Icons.person,color: Colors.black), label: 'Account'),
+              icon: Icon(Icons.home, color: Colors.black), label: 'Home'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.favorite, color: Colors.black),
+              label: 'Wishlist'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.person, color: Colors.black), label: 'Account'),
         ],
       ),
     );

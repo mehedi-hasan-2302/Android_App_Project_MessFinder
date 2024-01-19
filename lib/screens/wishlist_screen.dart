@@ -51,6 +51,7 @@ class WishlistScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Wishlist'),
+        backgroundColor: const Color.fromARGB(255, 194, 131, 233),
       ),
       body: ListView.builder(
         itemCount: bookmarkedMesses.length,
