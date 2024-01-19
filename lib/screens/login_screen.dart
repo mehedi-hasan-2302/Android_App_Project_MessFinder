@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:messfinder/screens/home_screen.dart';
 import 'package:messfinder/screens/wishlist_screen.dart';
+import 'package:messfinder/screens/signup_screen.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -40,7 +41,9 @@ class LoginPage extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => WishlistScreen(wishlistedMessNames: const [],),
+                builder: (context) => WishlistScreen(
+                  wishlistedMessNames: const [],
+                ),
               ),
             );
           } else if (value == 2) {
@@ -80,11 +83,9 @@ class LoginPage extends StatelessWidget {
         ),
         SizedBox(height: 10),
         Text("Enter your credentials to login"),
-         SizedBox(height: 30),
+        SizedBox(height: 30),
       ],
-      
     );
-    
   }
 
   Widget _inputField(context) {
@@ -147,7 +148,14 @@ class LoginPage extends StatelessWidget {
       children: [
         const Text("Don't have an account? "),
         TextButton(
-          onPressed: () {},
+          onPressed: () {
+             Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const SignUpPage(),
+              ),
+            );
+          },
           child: const Text("Sign Up"),
         ),
       ],
