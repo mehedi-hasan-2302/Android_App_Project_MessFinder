@@ -115,7 +115,7 @@ class _MessScreenState extends State<MessScreen> {
                     ),
                   ),
                   child: const Padding(
-                    padding: EdgeInsets.all(15),
+                    padding: EdgeInsets.symmetric(horizontal: 6.0,vertical: 15.0),
                     child: Text(
                       "Book Now",
                       style: TextStyle(
@@ -157,7 +157,7 @@ class _MessScreenState extends State<MessScreen> {
                     ),
                   ),
                   child: const Padding(
-                    padding: EdgeInsets.all(15),
+                    padding: EdgeInsets.symmetric(horizontal: 6.0,vertical: 15.0),
                     child: Text(
                       "Add to Wishlist",
                       style: TextStyle(
