@@ -42,7 +42,7 @@ rule CXX_EXECUTABLE_LINKER__messfinder
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = /snap/flutter/141/usr/bin/cmake -S/home/mehedi/Desktop/Flutter/Android_App_Project_MessFinder/linux -B/home/mehedi/Desktop/Flutter/Android_App_Project_MessFinder/build/linux/x64/debug
+  command = /snap/flutter/145/usr/bin/cmake -S/home/mehedi/Desktop/Flutter/Android_App_Project_MessFinder/linux -B/home/mehedi/Desktop/Flutter/Android_App_Project_MessFinder/build/linux/x64/debug
   description = Re-running CMake...
   generator = 1
 

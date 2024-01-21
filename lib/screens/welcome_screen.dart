@@ -14,7 +14,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   void initState() {
     super.initState();
-    
+
     Future.delayed(const Duration(seconds: 2), () {
       Navigator.pushReplacement(
         context,
@@ -77,10 +77,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 height: MediaQuery.of(context).size.height / 2.666,
                 padding: const EdgeInsets.only(top: 40, bottom: 30),
                 decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(70),
-                    )),
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(70),
+                  ),
+                ),
                 child: Column(children: [
                   const Text(
                     "MessFinder",
